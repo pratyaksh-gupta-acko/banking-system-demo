@@ -7,7 +7,6 @@ run-name: Workflow testing
 on: 
   push:
     branches: ["main"]
-  pull_request:
 jobs:
   test1:
     runs-on: ubuntu-latest
