@@ -1,0 +1,2 @@
+Checking github actions without pull request trigger
+Checking sonarqube integration 
