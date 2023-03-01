@@ -7,6 +7,23 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    services:
+      # Label used to access the service container
+      postgres:
+        # Docker Hub image
+        image: postgres
+        # Provide the password for postgres
+        env:
+          POSTGRES_USER: bank_admin
+          POSTGRES_PASSWORD: admin
+          POSTGRES_DB: bank
+          POSTGRES_PORT: 5432
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v3
