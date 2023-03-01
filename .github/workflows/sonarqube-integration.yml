@@ -53,23 +53,29 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
-      - name: Connect to PostgreSQL
-        # Runs a script that creates a PostgreSQL table, populates
-        # the table with data, and then retrieves the data
-        run: node client.js
-        # Environment variables used by the `client.js` script to create
-        # a new PostgreSQL table.
+#       - name: Connect to PostgreSQL
+#         # Runs a script that creates a PostgreSQL table, populates
+#         # the table with data, and then retrieves the data
+#         run: node client.js
+#         # Environment variables used by the `client.js` script to create
+#         # a new PostgreSQL table.
+#         env:
+#           # The hostname used to communicate with the PostgreSQL service container
+#           DB_HOST: localhost
+#           DB_USER: bank_admin
+#           DB_PASSWORD: admin
+#           DB_NAME: bank
+#           # The default PostgreSQL port
+#           DB_PORT: 5432
+#           DB_DIALECT: postgres
+      - name: Build and analyze
         env:
-          # The hostname used to communicate with the PostgreSQL service container
           DB_HOST: localhost
           DB_USER: bank_admin
           DB_PASSWORD: admin
           DB_NAME: bank
           # The default PostgreSQL port
           DB_PORT: 5432
-          DB_DIALECT: postgres
-      - name: Build and analyze
-        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
