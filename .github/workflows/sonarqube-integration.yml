@@ -61,9 +61,13 @@ jobs:
         # a new PostgreSQL table.
         env:
           # The hostname used to communicate with the PostgreSQL service container
-          POSTGRES_HOST: localhost
+          DB_HOST: localhost
+          DB_USER: bank_admin
+          DB_PASSWORD: admin
+          DB_NAME: bank
           # The default PostgreSQL port
-          POSTGRES_PORT: 5432
+          DB_PORT: 5432
+          DB_DIALECT: postgres
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
