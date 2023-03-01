@@ -59,7 +59,7 @@ jobs:
           DB_USER: bank_admin
           DB_PASSWORD: admin
           DB_NAME: bank
-          # The PostgreSQL port
+          # The default PostgreSQL port
           DB_PORT: 5432
           GITHUB_TOKEN: ${{ secrets.TOKEN }}  # Needed to get PR information, if any
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
